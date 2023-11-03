@@ -1,0 +1,22 @@
+services:
+  log_aggregator_dev:
+    build: .
+    profiles:
+      - dev
+    ports:
+      - "8888:8888/udp"
+    volumes:
+      - ./config/dev_config.json:/app/config/config.json
+    depends_on:
+      - mongodb
+  mongodb:
+    image: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+    profiles:
+      - dev
+  log_aggregator:
+    build: ghcr.io/rainbowdashlabs/log-aggregator
+    profiles:
+      - prod

@@ -1,0 +1,49 @@
+{
+  "mongo": {
+    "user": "root",
+    "password": "example",
+    "host": "mongodb",
+    "port": 27017,
+    "database": "log-aggregator"
+  },
+  "socket": {
+    "host": "0.0.0.0",
+    "port": 8888
+  },
+  "format": {
+    "required_keys": [],
+    "restricted_values": {
+      "index": [
+        "example"
+      ]
+    }
+  },
+  "retention": {
+    "active": false,
+    "years": 0,
+    "months": 0,
+    "days": 30,
+    "hours": 0,
+    "seconds": 0
+  },
+  "indices": {
+    "block_unkown": false,
+    "index_field": "_index",
+    "indices": {
+      "example": {
+        "retention": {
+          "active": false,
+          "years": 0,
+          "months": 0,
+          "days": 30,
+          "hours": 0,
+          "seconds": 0
+        },
+        "format": {
+          "required_keys": [],
+          "restricted_values": {}
+        }
+      }
+    }
+  }
+}
