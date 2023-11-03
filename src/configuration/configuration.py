@@ -23,6 +23,7 @@ class Socket(BaseModel):
 
 class Format(BaseModel):
     required_keys: list[str] = []
+    harmonize_keys: bool = True
     # this is a required key as well but the value has to be one of the listed values
     restricted_values: dict[str, list[str]] = {'index': ["example"]}
 
