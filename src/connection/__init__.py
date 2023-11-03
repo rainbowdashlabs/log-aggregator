@@ -74,7 +74,7 @@ def _read(sock):
         try:
             record = json.loads(payload)
             record['_ip'] = {"host": addr[0], "port": str(addr[1])}
-            _validate(record)
+            record = _validate(record)
             log.debug(f"Received json message: {record}")
             add_log(record)
         except json.JSONDecodeError:
