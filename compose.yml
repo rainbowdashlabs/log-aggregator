@@ -11,12 +11,14 @@ services:
       - mongodb
   mongodb:
     image: mongo
+    ports:
+      - "27016:27017"
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: example
     profiles:
       - dev
   log_aggregator:
-    build: ghcr.io/rainbowdashlabs/log-aggregator
+    image: ghcr.io/rainbowdashlabs/log-aggregator
     profiles:
       - prod

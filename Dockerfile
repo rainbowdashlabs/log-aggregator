@@ -21,7 +21,7 @@ ENV PATH="/.venv/bin:$PATH"
 
 WORKDIR app
 COPY . .
-RUN touch logs
+RUN mkdir -p logs
 
 EXPOSE 8888
 

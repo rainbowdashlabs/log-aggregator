@@ -20,7 +20,7 @@ def _validate(log: dict):
     if 'index' in log and log['index'] in config().indices:
         i_format = config().indices[log['indices']]
 
-    i_format.format.validate(log)
+    i_format.validate(log)
 
 
 def start():
@@ -39,9 +39,12 @@ def _read(sock):
         log.debug("waiting to receive message")
         data, addr = sock.recvfrom(1024 * 1024 * 4)
 
+        print(addr)
+
         payload = data.decode('utf-8')
         try:
             record = json.loads(payload)
+            record['_ip'] = {"host": addr[0], "port": str(addr[1])}
             _validate(record)
             log.debug(f"Received json message: {record}")
             add_log(record)
